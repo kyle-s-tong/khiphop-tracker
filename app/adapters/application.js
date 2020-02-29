@@ -1,8 +1,11 @@
 import JSONAPIAdapter from '@ember-data/adapter/json-api';
+import { inject as service } from '@ember/service';
 
 export default class ApplicationAdapter extends JSONAPIAdapter {
+    @service token;
+
     headers = {
-        'Authorization': 'Bearer BQDiPqVSOq-2cNz8tX4gmdr-1rvh2kswcy1x_O0I3-Znb_nSqpypWPnUC5p8E1V2Z1buFm4VmqA1z2de6Ps'
+        'Authorization': `Bearer ${this.token.currentActiveToken}`,
     };
     host = 'https://api.spotify.com/v1';
 }
