@@ -5,7 +5,7 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
     @service token;
 
     headers = {
-        'Authorization': `Bearer ${this.token.currentActiveToken}`,
+        'Authorization': `Bearer ${this.token.token}`,
     };
     host = 'https://api.spotify.com/v1';
 }
