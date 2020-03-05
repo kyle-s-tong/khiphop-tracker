@@ -9,8 +9,13 @@ export default class HomeRoute extends Route {
     }
 
     model() {
-      return this.store.query('artist', {
-        ids: '7IWshUcKfJyDWrbiF2XT8J,0IznZPMUyaPGdqfP4oqBja'
-      })
+      // TODO: remove this seed once we get details from the server on search.
+      localStorage.setItem('khiphop-tracker:artistsBeingTracked', ['0IznZPMUyaPGdqfP4oqBja', '7IWshUcKfJyDWrbiF2XT8J']);
+
+      if (localStorage && localStorage.getItem('khiphop-tracker:artistsBeingTracked')) {
+        return this.store.query('artist', {
+          ids: localStorage.getItem('khiphop-tracker:artistsBeingTracked')
+        })
+      }
     }
 }

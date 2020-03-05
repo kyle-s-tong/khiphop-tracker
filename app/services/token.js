@@ -7,11 +7,12 @@ export default class TokenService extends Service {
   @tracked token;
 
   get currentActiveToken() {
-    const tokenDetails = JSON.parse(localStorage.getItem('tokenDetails'));
+    const tokenDetails = JSON.parse(localStorage.getItem('khiphop-tracker:tokenDetails'));
     const now = new Date();
-    
+
     if (tokenDetails && tokenDetails.expiry > now.toISOString()) {
       this.token = tokenDetails.token;
+      return this.token;
     } else {
       return this.requestNewToken();
     }
@@ -32,7 +33,7 @@ export default class TokenService extends Service {
         now.setSeconds(now.getSeconds() + response.expires_in);
         const expiry = now;
 
-        localStorage.setItem('tokenDetails', JSON.stringify({
+        localStorage.setItem('khiphop-tracker:tokenDetails', JSON.stringify({
           token: response.access_token,
           expiry,
         }));
