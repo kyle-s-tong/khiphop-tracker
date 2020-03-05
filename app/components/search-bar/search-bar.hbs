@@ -1,7 +1,7 @@
-<form class="w-1/2 flex justify-center">
+<form class="w-1/2 flex justify-center" {{on "submit" this.search}}>
   <div class="flex w-1/2 justify-between">
-    <input class="flex-grow mr-1 bg-gray-100" placeholder="Search for an artist to follow..">
-    <button class="p-2 pt-1 pb-1 text-center text-sm rounded bg-gray-300" {{on "click" this.search}}>
+    <Input class="flex-grow mr-1 bg-gray-100" placeholder="Search for an artist to follow.." @value={{this.input}} />
+    <button class="p-2 pt-1 pb-1 text-center text-sm rounded bg-gray-300">
       Search
     </button>
   </div>
