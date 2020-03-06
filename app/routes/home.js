@@ -12,7 +12,8 @@ export default class HomeRoute extends Route {
       if (localStorage && localStorage.getItem('khiphop-tracker:artistsBeingTracked')) {
         return this.store.query('artist', {
           ids: localStorage.getItem('khiphop-tracker:artistsBeingTracked')
-        })
+        }, { reload: true })
       }
+      this.refresh();
     }
 }

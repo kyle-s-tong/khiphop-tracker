@@ -3,7 +3,6 @@ import { tracked } from '@glimmer/tracking';
 import { action } from "@ember/object";
 
 export default class HomeController extends Controller {
-
   @tracked searchResults;
 
   @action
@@ -12,7 +11,13 @@ export default class HomeController extends Controller {
   }
 
   @action
-  setArtistIds(ids) {
-    localStorage.setItem('khiphop-tracker:artistsBeingTracked', ids);
+  addArtist(artist) {
+    this.store.createRecord('artist', artist);
+
+    const storedArtists = localStorage.getItem('khiphop-tracker:artistsBeingTracked').split();
+    storedArtists.push(artist.id);
+
+    localStorage.setItem('khiphop-tracker:artistsBeingTracked', storedArtists);
+    console.log(this.model);
   }
 }
