@@ -18,10 +18,6 @@ export default class SearchBarComponent extends Component {
         this.searchTask.perform(this.input);
     }
 
-    @action updateResults() {
-        
-    }
-
     @task({ restartable: true, maxConcurrency: 1 })
     searchTask = function* (input) {
         const urlEncodedInput = encodeURIComponent(input);
@@ -34,7 +30,9 @@ export default class SearchBarComponent extends Component {
 
         yield timeout(150);
 
-        this.results = yield this.search(url);
+        const results = yield this.search(url);
+
+        this.args.updateSearchResults(results);
     }
 
     async search(url) {

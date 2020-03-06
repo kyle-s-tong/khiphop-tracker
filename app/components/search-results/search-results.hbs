@@ -1,3 +1,9 @@
-{{#if @results}}
-  results
-{{/if}}
+<div class="flex-col">
+  {{#if @results}}
+    {{#each @results.artists.items as |result|}}
+      <p>
+        {{result.name}}
+      </p>
+    {{/each}}
+  {{/if}}
+</div>

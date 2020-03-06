@@ -2,8 +2,8 @@
   <h1>
     Korean hip hop music tracker
   </h1>
-  <SearchBar::SearchBar @results={{results}} />
-  <SearchResults::SearchResults @results={{results}} />
+  <SearchBar::SearchBar @updateSearchResults={{this.updateSearchResults}} />
+  <SearchResults::SearchResults @results={{this.searchResults}} />
   {{#each @model as |artist|}}
     <p>
       {{artist.name}}
