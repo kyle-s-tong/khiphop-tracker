@@ -4,13 +4,7 @@
       class="flex-grow mr-1 bg-gray-100"
       placeholder="Search for an artist to follow.."
       @value={{this.input}}
+      @keyUp={{this.keyUp}}
     />
-    <button class="p-2 pt-1 pb-1 text-center text-sm rounded bg-gray-300"  {{on "click" this.search}}>
-      Search
-    </button>
   </div>
 </form>
-
-{{#if this.results}}
-  results
-{{/if}}
