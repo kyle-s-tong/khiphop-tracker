@@ -3,7 +3,7 @@
     Korean hip hop music tracker
   </h1>
   <SearchBar::SearchBar @updateSearchResults={{this.updateSearchResults}} />
-  <SearchResults::SearchResults @results={{this.searchResults}} />
+  <SearchResults::SearchResults @results={{this.searchResults}} @setArtistIds={{this.setArtistIds}} />
   {{#each @model as |artist|}}
     <p>
       {{artist.name}}

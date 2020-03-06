@@ -10,4 +10,9 @@ export default class HomeController extends Controller {
   updateSearchResults(results) {
     this.searchResults = results;
   }
+
+  @action
+  setArtistIds(ids) {
+    localStorage.setItem('khiphop-tracker:artistsBeingTracked', ids);
+  }
 }

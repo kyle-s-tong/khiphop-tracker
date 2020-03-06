@@ -1,7 +1,7 @@
 <div class="flex-col">
   {{#if @results}}
     {{#each @results.artists.items as |result|}}
-      <p>
+      <p class="cursor-pointer" {{on "click" (fn this.addToIds result.id)}}>
         {{result.name}}
       </p>
     {{/each}}
