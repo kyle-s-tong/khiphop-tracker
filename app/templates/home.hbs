@@ -5,8 +5,8 @@
   <SearchBar::SearchBar @updateSearchResults={{this.updateSearchResults}} />
   <SearchResults::SearchResults @results={{this.searchResults}} @addArtist={{this.addArtist}} />
   {{#each @model as |artist|}}
-    <p>
-      {{artist.name}}
-    </p>
+      <LinkTo @route='artist' @model={{artist.id}}>
+        {{artist.name}}
+      </LinkTo>
   {{/each}}
 </div>
