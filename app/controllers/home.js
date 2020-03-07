@@ -24,6 +24,6 @@ export default class HomeController extends Controller {
 
     localStorage.setItem('khiphop-tracker:artistsBeingTracked', storedArtists);
 
-    this.searchResults = null;
+    this.clearSearch();
   }
 }
