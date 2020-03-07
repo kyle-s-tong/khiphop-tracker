@@ -7,40 +7,45 @@ import { task } from 'ember-concurrency-decorators';
 import fetch from 'fetch';
 
 export default class SearchBarComponent extends Component {
-    @service store;
+  @service store;
 
-    @tracked input;
+  @tracked input;
 
-    @tracked results;
+  @tracked results;
 
-    @action
-    keyUp() {
-        this.searchTask.perform(this.input);
+  @action
+  keyUp() {
+    if (this.input.length === 0) {
+      this.args.clearSearch();
+      return;
     }
 
-    @task({ restartable: true, maxConcurrency: 1 })
-    searchTask = function* (input) {
-        const urlEncodedInput = encodeURIComponent(input);
-        // TODO: Move url to env file
-        const url = `https://api.spotify.com/v1/search?type=artist&q=${urlEncodedInput}`;
+    this.searchTask.perform(this.input);
+  }
 
-        if (!urlEncodedInput) {
-            return;
-        }
+  @task({ restartable: true, maxConcurrency: 1 })
+  searchTask = function* (input) {
+    const urlEncodedInput = encodeURIComponent(input);
+    // TODO: Move url to env file
+    const url = `https://api.spotify.com/v1/search?type=artist&q=${urlEncodedInput} genre:"k-hop"`;
 
-        yield timeout(150);
-
-        const results = yield this.search(url);
-
-        this.args.updateSearchResults(results);
+    if (!urlEncodedInput) {
+      return;
     }
 
-    async search(url) {
-        const { headers } = this.store.adapterFor('application');
+    yield timeout(150);
 
-        const response = await fetch(url, { headers });
-        const results = await response.json();
+    const results = yield this.search(url);
 
-        return results;
-    }
+    this.args.updateSearchResults(results);
+  }
+
+  async search(url) {
+    const { headers } = this.store.adapterFor('application');
+
+    const response = await fetch(url, { headers });
+    const results = await response.json();
+
+    return results;
+  }
 }

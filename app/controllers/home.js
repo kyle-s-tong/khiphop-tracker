@@ -11,6 +11,11 @@ export default class HomeController extends Controller {
   }
 
   @action
+  clearSearch() {
+    this.searchResults = null;
+  }
+
+  @action
   addArtist(artist) {
     this.store.createRecord('artist', artist);
 
