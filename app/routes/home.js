@@ -12,4 +12,8 @@ export default class HomeRoute extends Route {
     model() {
       return this.store.peekAll('artist');
     }
+
+    afterModel() {
+      localStorage.setItem('khiphop-tracker:artistsLastChecked', new Date());
+    }
 }

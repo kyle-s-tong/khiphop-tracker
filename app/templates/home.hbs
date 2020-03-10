@@ -8,6 +8,6 @@
       <LinkTo @route='artist' @model={{artist.id}}>
         {{artist.name}}
       </LinkTo>
-      {{artist.latestAlbum.name}}
+      {{artist.latestAlbum.name}} ({{artist.latestAlbum.releaseType}}) - released {{artist.latestAlbum.release_date}}
   {{/each}}
 </div>

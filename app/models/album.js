@@ -6,4 +6,17 @@ export default class AlbumModel extends Model {
   @attr release_date;
 
   @belongsTo('artist') artist;
+
+  get releaseType() {
+    switch (this.album_group) {
+      case 'single':
+        return 'Single';
+      case 'album':
+        return 'Album';
+      case 'appears_on':
+        return 'Feature';
+      default:
+        return 'Unknown';
+    }
+  }
 }
