@@ -4,6 +4,7 @@ export default class AlbumModel extends Model {
   @attr name;
   @attr album_group;
   @attr release_date;
+  @attr images;
 
   @belongsTo('artist') artist;
 
