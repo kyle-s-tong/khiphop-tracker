@@ -8,5 +8,8 @@
       <LinkTo @route='artist' @model={{artist.id}}>
         {{artist.name}}
       </LinkTo>
+      {{#each artist.albums as |album|}}
+          {{album.name}} - ({{album.album_group}}), released {{album.release_date}}<br>
+      {{/each}}
   {{/each}}
 </div>
