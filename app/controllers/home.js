@@ -25,5 +25,8 @@ export default class HomeController extends Controller {
     localStorage.setItem('khiphop-tracker:artistsBeingTracked', storedArtists);
 
     this.clearSearch();
+
+    // Send update after creating the record.
+    this.model.update();
   }
 }

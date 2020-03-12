@@ -12,7 +12,7 @@ const injectAlbumRelationships = (artistPayload) => {
   return payload;
 }
 export default class ArtistSerializer extends ApplicationSerializer {
-  normalizeQueryResponse(store, primaryModelClass, payload) {
+  normalizeFindAllResponse(store, primaryModelClass, payload) {
     const transformedArtists = payload.artists.map(artist => {
       const normalizedArtist = {
         id: artist.id,
