@@ -5,7 +5,11 @@ export default class HomeRoute extends Route {
     }
 
     model() {
-      return this.store.findAll('artist', { reload: true });
+      if (localStorage.getItem('khiphop-tracker:artistsBeingTracked')) {
+        return this.store.findAll('artist', { reload: true });
+      }
+
+      return this.store.peekAll('artist');
     }
 
     afterModel() {

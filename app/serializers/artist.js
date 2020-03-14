@@ -11,28 +11,31 @@ const injectAlbumRelationships = (artistPayload) => {
 
   return payload;
 }
+
 export default class ArtistSerializer extends ApplicationSerializer {
-  normalizeFindAllResponse(store, primaryModelClass, payload) {
-    const transformedArtists = payload.artists.map(artist => {
-      const normalizedArtist = {
-        id: artist.id,
-        type: artist.type,
-        attributes: artist,
-        relationships: {},
-      }
+  normalizeArrayResponse(store, primaryModelClass, payload) {
+    const artistsPayload = super.normalizeArrayResponse(
+      store,
+      primaryModelClass,
+      payload.artists
+    );
 
-      normalizedArtist.data = injectAlbumRelationships(normalizedArtist);
-
-      return normalizedArtist;
+    artistsPayload.data.forEach((artist, index) => {
+      artistsPayload.data[index] = injectAlbumRelationships(artist);
     })
 
+    return artistsPayload;
+  }
 
-    const normalizedPayload = {
-      data: transformedArtists
-    }
+  normalizeSingleResponse(store, primaryModelClass, payload) {
+    const artistPayload = super.normalizeSingleResponse(
+      store,
+      primaryModelClass,
+      payload
+    );
 
+    artistPayload.data = injectAlbumRelationships(artistPayload.data);
 
-
-    return normalizedPayload;
+    return artistPayload;
   }
 }

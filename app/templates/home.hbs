@@ -4,14 +4,17 @@
   </h1>
   <SearchBar::SearchBar @updateSearchResults={{this.updateSearchResults}} @clearSearch={{this.clearSearch}} />
   <SearchResults::SearchResults @results={{this.searchResults}} @addArtist={{this.addArtist}} />
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 pt-4">
-    {{#each @model as |artist|}}
-      <div class="flex flex-col">
-        <LinkTo @route='artist' @model={{artist.id}}>
-          <img src={{artist.latestAlbum.images.firstObject.url}}>
-        </LinkTo>
-        {{artist.latestAlbum.name}} ({{artist.latestAlbum.releaseType}}) - released {{artist.latestAlbum.release_date}}
-      </div>
-    {{/each}}
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 pt-4">
+    {{#if this.model}}
+      {{#each this.model as |artist|}}
+        <div class="flex flex-col">
+          <LinkTo @route='artist' @model={{artist.id}}>
+            <img src={{artist.latestAlbum.images.1.url}}>
+          </LinkTo>
+          {{artist.name}}
+          {{artist.latestAlbum.name}} ({{artist.latestAlbum.releaseType}}) - released {{artist.latestAlbum.release_date}}
+        </div>
+      {{/each}}
+    {{/if}}
   </div>
 </div>
