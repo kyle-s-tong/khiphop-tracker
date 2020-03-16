@@ -1,7 +1,6 @@
 # khiphop-tracker
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This app currently leverages the Spotify suite of APIs to track Korean hip hop artists and their releases of new music. I find that it is quite hard to find this information on English-based websites, so I have started this project to help me track my favourite artists.
 
 ## Prerequisites
 
