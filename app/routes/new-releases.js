@@ -14,7 +14,7 @@ export default class NewReleasesRoute extends Route {
 
       const newReleases = albums.filter(album => {
         // TODO: make this comparison not hardcoded
-        return album.release_date > '2020-03-01'
+        return album.release_date > '2020-03-10'
       })
 
       return {
