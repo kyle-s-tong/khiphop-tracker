@@ -11,12 +11,12 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 pt-4">
     {{#if this.model}}
       {{#each this.model as |artist|}}
-        <div class="flex flex-col">
-          <LinkTo @route='artist' @model={{artist.id}}>
-            <img src={{artist.images.firstObject.url}}>
-          </LinkTo>
-          {{artist.name}}
-        </div>
+        <ArtistAlbum::ArtistAlbum
+          @image={{artist.images.firstObject.url}}
+          @artist={{artist}}
+          @linkRoute={{"artist"}}
+          @linkModelId={{artist.id}}
+        />
       {{/each}}
     {{/if}}
   </div>
