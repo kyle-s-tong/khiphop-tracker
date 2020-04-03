@@ -4,7 +4,7 @@
     {{#each this.model as |newRelease|}}
       {{#if newRelease.albums}}
         <ArtistAlbum::ArtistAlbum
-          @image={{album.images.firstObject.url}}
+          @image={{newRelease.albums.firstObject.images.firstObject.url}}
           @album={{newRelease.albums.firstObject}}
           @artist={{newRelease.artist}}
           @linkRoute={{"artist"}}
