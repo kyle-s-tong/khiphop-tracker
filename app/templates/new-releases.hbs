@@ -1,21 +1,12 @@
 <div class="h-screen w-full flex flex-col items-center p-4">
-  <h1>
-    Korean hip hop music tracker
-  </h1>
+  <SiteHeader::SiteHeader />
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 pt-4 pb-4">
     {{#each this.model as |newRelease|}}
       {{#if newRelease.albums}}
-        <div class="flex relative">
-          <img src={{newRelease.albums.firstObject.images.firstObject.url}}>
-          <div class="flex flex-col absolute w-full h-full items-center justify-center text-white bg-overlay-25 hover:bg-overlay-75">
-            <p class="text-xs md:text-lg uppercase">
-              {{newRelease.artist.name}}
-            </p>
-            <p class="uppercase text-xs">
-              {{this.releaseType}}
-            </p>
-          </div>
-        </div>
+        <ArtistAlbum::ArtistAlbum
+          @album={{newRelease.albums.firstObject}}
+          @artist={{newRelease.artist}}
+        />
       {{/if}}
     {{/each}}
   </div>
