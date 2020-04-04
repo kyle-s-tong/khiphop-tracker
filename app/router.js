@@ -10,4 +10,5 @@ Router.map(function() {
   this.route('home');
   this.route('artist', { path: '/artist/:id' });
   this.route('new-releases', { path: '/' });
+  this.route('release', { path: 'release/:id' })
 });

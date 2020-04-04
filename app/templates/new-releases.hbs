@@ -1,5 +1,4 @@
 <div class="h-screen w-full flex flex-col items-center p-4">
-  <SiteHeader::SiteHeader />
   <div class="grid grid-cols-2 md:grid-cols-4 gap-3 pt-4 pb-4">
     {{#each this.model as |newRelease|}}
       {{#if newRelease.albums}}
@@ -7,8 +6,8 @@
           @image={{newRelease.albums.firstObject.images.firstObject.url}}
           @album={{newRelease.albums.firstObject}}
           @artist={{newRelease.artist}}
-          @linkRoute={{"artist"}}
-          @linkModelId={{newRelease.artist.id}}
+          @linkRoute={{"release"}}
+          @linkModelId={{newRelease.albums.firstObject.id}}
         />
       {{/if}}
     {{/each}}

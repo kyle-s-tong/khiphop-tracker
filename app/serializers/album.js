@@ -1,23 +1,23 @@
 import ApplicationSerializer from './application';
 
 export default class AlbumSerializer extends ApplicationSerializer {
-  normalizeResponse(store, primaryModelClass, payload) {
-    const transformedAlbums = payload.items.map(album => {
-      return {
-        id: album.id,
-        type: album.type,
-        attributes: album,
-        relationships: {},
-      }
-    })
+  normalizeArrayResponse(store, primaryModelClass, payload) {
+    const albumsPayload = super.normalizeArrayResponse(
+      store,
+      primaryModelClass,
+      payload.items
+    );
 
+    return albumsPayload;
+  }
 
-    const normalizedPayload = {
-      data: transformedAlbums
-    }
+  normalizeSingleResponse(store, primaryModelClass, payload) {
+    const albumPayload = super.normalizeSingleResponse(
+      store,
+      primaryModelClass,
+      payload
+    );
 
-
-
-    return normalizedPayload;
+    return albumPayload;
   }
 }
