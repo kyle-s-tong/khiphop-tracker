@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import Moment from 'moment';
 
 export default class NewReleasesRoute extends Route {
   beforeModel() {
@@ -6,6 +7,7 @@ export default class NewReleasesRoute extends Route {
       this.transitionTo('home');
     }
   }
+
   async model() {
     const artists = await this.store.findAll('artist');
 
@@ -13,8 +15,8 @@ export default class NewReleasesRoute extends Route {
       const albums = await artist.albums;
 
       const newReleases = albums.filter(album => {
-        // TODO: make this comparison not hardcoded
-        return album.release_date > '2020-03-10'
+        const now = new Moment();
+        return album.release_date > now.subtract(7, 'days').format('YYYY-MM-DD');
       })
 
       return {
