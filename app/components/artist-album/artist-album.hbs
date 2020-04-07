@@ -8,8 +8,8 @@
       <p class="uppercase leading-loose text-xs xl:text-xl overlay">
         {{#if @album}}
           {{@album.releaseType}}
-          {{#if albumArtistDifferentFromArtist}}
-            ({{@album.artist.name}})
+          {{#if this.albumArtistDifferentFromArtist}}
+            ({{@album.artists.firstObject.name}})
           {{/if}}
         {{/if}}
       </p>

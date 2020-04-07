@@ -1,4 +1,4 @@
-import Model, { attr, hasMany, belongsTo } from '@ember-data/model';
+import Model, { attr, hasMany } from '@ember-data/model';
 
 export default class AlbumModel extends Model {
   @attr name;
@@ -8,7 +8,7 @@ export default class AlbumModel extends Model {
   @attr total_tracks;
 
   @hasMany('track') tracks;
-  @belongsTo('artist') artist;
+  @hasMany('artist') artists;
 
   get releaseType() {
     switch (this.album_group) {

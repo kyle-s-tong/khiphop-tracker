@@ -3,7 +3,9 @@ import ApplicationSerializer from './application';
 const injectArtistRelationships = (albumPayload, artists = null) => {
   const payload = { ...albumPayload };
 
-  payload.relationships.artists = [];
+  if (!payload.relationships.artists) {
+    payload.relationships.artists = [];
+  }
 
   artists.forEach(artist => {
     payload.relationships.artists.push({
@@ -39,7 +41,7 @@ export default class AlbumSerializer extends ApplicationSerializer {
 
     albumsPayload.data.forEach((album, index) => {
       let artists;
-      if (payload.artists) {
+      if (album.artists) {
         artists = album.artists;
       }
       albumsPayload.data[index] = injectTrackRelationships(album);
