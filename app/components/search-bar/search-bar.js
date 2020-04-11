@@ -25,11 +25,10 @@ export default class SearchBarComponent extends Component {
 
   @task({ restartable: true, maxConcurrency: 1 })
   searchTask = function* (input) {
-    const urlEncodedInput = encodeURIComponent(input);
     // TODO: Move url to env file
-    const url = `https://api.spotify.com/v1/search?type=artist&q=${urlEncodedInput}+genre:"k-hop"`;
+    const url = `http://localhost:3000/artists/search?q=${input}`;
 
-    if (!urlEncodedInput) {
+    if (!input) {
       return;
     }
 

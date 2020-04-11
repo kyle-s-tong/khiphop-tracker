@@ -16,8 +16,6 @@ module.exports = function(environment) {
         Date: false
       }
     },
-    SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
-    SPOTIFY_SECRET_KEY: process.env.SPOTIFY_SECRET_KEY,
 
     APP: {
       // Here you can pass flags/options to your application instance

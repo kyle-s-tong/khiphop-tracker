@@ -1,8 +1,8 @@
 <div class="flex-col">
   {{#if @results}}
-    {{#each @results.artists.items as |result|}}
+    {{#each @results.data as |result|}}
       <p class="cursor-pointer" {{on "click" (fn this.args.addArtist result)}}>
-        {{result.name}}
+        {{result.attributes.name}}
       </p>
     {{/each}}
   {{/if}}
