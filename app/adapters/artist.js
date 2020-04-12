@@ -1,7 +1,7 @@
 import ApplicationAdapter from './application';
 
 export default class ArtistAdapter extends ApplicationAdapter {
-  urlForCreateRecord(modelName, snapshot) {
+  urlForCreateRecord() {
     return super.urlForCreateRecord(...arguments) + '/add';
   }
 }
