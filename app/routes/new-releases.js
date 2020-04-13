@@ -2,12 +2,6 @@ import Route from '@ember/routing/route';
 import Moment from 'moment';
 
 export default class NewReleasesRoute extends Route {
-  beforeModel() {
-    if (typeof localStorage.getItem('khiphop-tracker:artistsBeingTracked') === 'undefined') {
-      this.transitionTo('home');
-    }
-  }
-
   async model() {
     const artists = await this.store.findAll('artist');
 

@@ -4,7 +4,6 @@ import { sort } from '@ember/object/computed';
 export default class ArtistModel extends Model {
   @attr name;
   @attr images;
-  @attr href;
 
   @hasMany('album') albums;
 
