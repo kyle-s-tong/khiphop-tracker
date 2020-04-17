@@ -9,6 +9,7 @@ export default class AlbumModel extends Model {
 
   @hasMany('track') tracks;
   @hasMany('artist') artists;
+  @hasMany('artist', { inverse: null }) albumArtists;
 
   get releaseType() {
     switch (this.album_group) {

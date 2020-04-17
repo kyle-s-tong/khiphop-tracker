@@ -5,12 +5,7 @@ export default class NewReleasesRoute extends Route {
     const artists = await this.store.findAll('artist');
 
     const artistsNewAlbums = await Promise.all(artists.map(async (artist) => {
-      const latestReleases = await this.store.query('album', {
-        filter: {
-          latestReleases: true
-        }
-      })
-
+      const latestReleases = await artist.latestReleases;
       return {
         artist,
         albums: latestReleases,
