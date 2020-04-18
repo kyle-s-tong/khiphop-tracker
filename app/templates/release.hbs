@@ -1,3 +1,10 @@
 <p>{{@model.name}}</p>
 {{log @model}}
-<p>{{@model.artists.firstObject.name}}</p>
+
+{{#each @model.albumArtists as |artist|}}
+  <p>{{artist.name}}</p>
+{{/each}}
+
+{{#each @model.tracks as |track|}}
+  <p>{{track.name}}</p>
+{{/each}}
