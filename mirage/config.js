@@ -30,5 +30,9 @@ export default function() {
   this.get('/artists/:id/albums');
 
   this.get('/albums');
+  this.get('/albums/:id');
+  this.get('/albums/:id/tracks');
 
+  this.get('/tracks');
+  this.get('/tracks/:id');
 }

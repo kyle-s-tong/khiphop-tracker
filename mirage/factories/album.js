@@ -2,7 +2,7 @@ import { Factory } from 'ember-cli-mirage';
 
 export default Factory.extend({
   name(i) {
-    return `Artist ${i}`;
+    return `Album ${i}`;
   },
 
   images() {
