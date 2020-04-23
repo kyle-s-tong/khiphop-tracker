@@ -6,11 +6,13 @@ export default function(server) {
   */
 
   server.createList('artist', 10).forEach(artist => {
-    server.createList('album', 3, { artists: [artist] }).forEach(album => {
-      server.createList('track', 10, album)
+    const albums = server.createList('album', 3, { artists: [artist], albumArtists: [artist] });
+    albums.forEach(album => {
+      server.createList('track', 10, { album })
     });
+
     artist.update({
-      latestReleases: [server.create('album')]
+      latestReleases: [albums.firstObject]
     });
   });
 }
