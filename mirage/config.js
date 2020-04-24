@@ -1,3 +1,5 @@
+import searchResults from './dumps/search-results';
+
 export default function() {
 
   // These comments are here to help you get started. Feel free to delete them.
@@ -26,6 +28,9 @@ export default function() {
 
   this.get('/artists');
   this.get('/artists/add');
+  this.get('/artists/search', () => {
+    return searchResults;
+  }, { timing: 200 })
   this.get('/artists/:id');
   this.get('/artists/:id/albums');
 

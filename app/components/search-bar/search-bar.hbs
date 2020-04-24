@@ -1,10 +1,12 @@
-<form class="w-1/2 flex justify-center pt-4 pb-4">
-  <div class="flex w-1/2 justify-between">
+<form class="w-full md:w-1/2 flex justify-center pt-4">
+  <div class="flex w-full md:w-1/2 justify-between">
     <Input
-      class="flex-grow mr-1 bg-gray-100"
-      placeholder="Search for an artist to follow.."
+      class="flex-grow bg-gray-100 border border-gold-base py-2 px-4 placeholder-gold-base text-gold-base text-xs md:text-base outline-none"
+      placeholder="Search for an artist to track.."
       @value={{this.input}}
       @keyUp={{this.keyUp}}
+      @focusOut={{this.args.clearSearch}}
+      autocomplete="off"
     />
   </div>
 </form>

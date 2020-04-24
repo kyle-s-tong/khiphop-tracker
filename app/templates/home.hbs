@@ -7,7 +7,7 @@
     @results={{this.searchResults}}
     @addArtist={{this.addArtist}}
   />
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 pt-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 pt-8">
     {{#if this.model}}
       {{#each this.model as |artist|}}
         <ArtistAlbum::ArtistAlbum

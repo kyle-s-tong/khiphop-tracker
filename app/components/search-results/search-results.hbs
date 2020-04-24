@@ -1,9 +1,9 @@
-<div class="flex-col">
+<div class="relative flex-col flex items-center w-full md:w-1/2">
   {{#if @results}}
-    {{#each @results.data as |result|}}
-      <p class="cursor-pointer" {{on "click" (fn this.args.addArtist result)}}>
-        {{result.attributes.name}}
-      </p>
-    {{/each}}
+    <div class="absolute w-full border md:w-1/2 z-40 flex flex-col items-center justify-center bg-gray-100 p-2">
+      {{#each @results.data as |result|}}
+        <SearchResult::SearchResult @result={{result}} @addArtist={{this.args.addArtist}} />
+      {{/each}}
+    </div>
   {{/if}}
 </div>
