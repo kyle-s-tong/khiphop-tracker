@@ -1,3 +1,6 @@
-<div class="cursor-pointer text-gold-base w-full py-1 text-center flex justify-between hover:bg-gray-200" {{on "click" (fn this.args.addArtist result)}}>
+<div
+  class="cursor-pointer text-gold-base w-full py-1 text-center flex justify-between hover:bg-gray-200"
+  {{on "click" (fn this.args.addArtist this.args.result)}}
+>
   {{@result.attributes.name}}
 </div>

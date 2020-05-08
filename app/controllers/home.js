@@ -4,6 +4,7 @@ import { action } from "@ember/object";
 
 export default class HomeController extends Controller {
   @tracked searchResults;
+  @tracked searchValue = null;
 
   @action
   updateSearchResults(results) {
@@ -13,6 +14,7 @@ export default class HomeController extends Controller {
   @action
   clearSearch() {
     this.searchResults = null;
+    this.searchValue = null;
   }
 
   @action

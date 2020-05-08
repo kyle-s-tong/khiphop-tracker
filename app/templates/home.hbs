@@ -2,12 +2,14 @@
   <SearchBar::SearchBar
     @updateSearchResults={{this.updateSearchResults}}
     @clearSearch={{this.clearSearch}}
+    @value={{this.searchValue}}
   />
   <SearchResults::SearchResults
     @results={{this.searchResults}}
     @addArtist={{this.addArtist}}
+    @clearSearch={{this.clearSearch}}
   />
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 pt-8">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 pt-8 px-32">
     {{#if this.model}}
       {{#each this.model as |artist|}}
         <ArtistAlbum::ArtistAlbum

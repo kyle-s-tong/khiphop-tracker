@@ -9,18 +9,16 @@ import fetch from 'fetch';
 export default class SearchBarComponent extends Component {
   @service store;
 
-  @tracked input;
-
   @tracked results;
 
   @action
   keyUp() {
-    if (this.input.length === 0) {
+    if (this.args.value.length === 0) {
       this.args.clearSearch();
       return;
     }
 
-    this.searchTask.perform(this.input);
+    this.searchTask.perform(this.args.value);
   }
 
   @task({ restartable: true, maxConcurrency: 1 })
