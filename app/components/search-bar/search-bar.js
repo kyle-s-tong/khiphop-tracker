@@ -13,7 +13,7 @@ export default class SearchBarComponent extends Component {
 
   @action
   keyUp() {
-    if (this.args.value.length === 0) {
+    if (!this.args.value || this.args.value.length === 0) {
       this.args.clearSearch();
       return;
     }
