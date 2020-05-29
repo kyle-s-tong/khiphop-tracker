@@ -5,3 +5,7 @@
 .text-border {
   text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
 }
+
+.active div {
+  @apply bg-gold-base text-white;
+}
